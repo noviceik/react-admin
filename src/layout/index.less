@@ -1,0 +1,28 @@
+@headerHeight: 60px;
+
+.basic-layout {
+  width: 100vw;
+  height: 100vh;
+  .header-layout {
+    width: 100%;
+    height: @headerHeight;
+    background: #fff;
+    box-shadow: 0 5px 10px 0 rgba(117, 129, 168, 0.2);
+    display: flex;
+    .header-left {
+      flex: 0 0 auto;
+      line-height: @headerHeight;
+      vertical-align: middle;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .header-conter {
+      flex: 1 1 auto;
+    }
+    .header-right {
+      flex: 0 0 auto;
+    }
+  }
+}
