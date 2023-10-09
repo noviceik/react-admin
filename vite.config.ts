@@ -1,7 +1,7 @@
-import { defineConfig, ConfigEnv, UserConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
-
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { ConfigEnv, defineConfig, UserConfig } from 'vite';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 function resolve(dir) {
   return path.join(__dirname, '.', dir)
 }
@@ -9,7 +9,12 @@ function resolve(dir) {
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   return {
-    plugins: [react(),], css: {
+    plugins: [react(), createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')],
+      // 指定symbolId格式
+      symbolId: 'icon-[dir]-[name]'
+    })], css: {
       preprocessorOptions: {
         less: {
           additionalData: `@import "${path.resolve(__dirname, 'src/index.less')}";`,
@@ -26,6 +31,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // 忽略后缀名的配置选项
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
     },
+
     //启动服务配置
     server: {
       // 服务器主机名，如果允许外部访问，可设置为 "0.0.0.0" 也可设置成你的ip地址
@@ -43,12 +49,12 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         // }
       }
     },
+
     // 生产环境打包配置
     //去除 console debugger
     // esbuild: {
     //   pure:mode==='production' ? ["console.log", "debugger"] : []
     // },
-
     // build: {
     //   terserOptions: {
     //     compress: {

@@ -1,0 +1,169 @@
+// from: https://codepen.io/AlexWarnes/pen/jXYYKL
+
+.loading {
+  width: 100%;
+  height: 100%;
+  background-color: #fbfaff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .spinner-box {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    .leo {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+    .load {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #434f74;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      .load-doc {
+        margin-left: 3px;
+        display: inline-block;
+        width: 1.5ch;
+        .doc {
+          display: inline-block;
+          width: 0ch;
+          overflow: hidden;
+          vertical-align: bottom;
+          -webkit-animation: fontAnim 3s linear 0.2s infinite;
+          -webkit-animation-timing-function: ease-out;
+        }
+      }
+    }
+    .blue-orbit {
+      width: 165px;
+      height: 165px;
+      border: 2px solid #004e75a5;
+      -webkit-animation: spin3D 3s linear 0.2s infinite;
+    }
+    .green-orbit {
+      width: 120px;
+      height: 120px;
+      border: 2px solid #00722fa5;
+      -webkit-animation: spin3D 2s linear 0s infinite;
+    }
+    .red-orbit {
+      width: 90px;
+      height: 90px;
+      border: 2px solid #6d3800a5;
+      -webkit-animation: spin3D 1s linear 0s infinite;
+    }
+    .white-orbit {
+      width: 60px;
+      height: 60px;
+      border: 3px solid #434f74;
+    }
+    .w1 {
+      -webkit-animation: spin3Dw1 10s linear 0s infinite;
+    }
+    .w2 {
+      -webkit-animation: spin3Dw2 10s linear 0s infinite;
+    }
+    .w3 {
+      -webkit-animation: spin3Dw3 10s linear 0s infinite;
+    }
+  }
+}
+
+.c-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .c-spinner-box {
+    .three-quarter-spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid #fb5b53;
+      border-top: 3px solid transparent;
+      border-radius: 50%;
+      animation: spin 0.5s linear 0s infinite;
+    }
+  }
+}
+
+@keyframes spin3D {
+  from {
+    transform: rotate3d(0.5, 0.5, 0.5, 360deg);
+  }
+  to {
+    transform: rotate3d(0deg);
+  }
+}
+
+@keyframes spin3Dw1 {
+  0% {
+    transform: rotate3D(1, 1, 1, 90deg);
+  }
+  50% {
+    transform: rotate3d(0.5, 0.5, 0.5, 360deg);
+  }
+  100% {
+    transform: rotate3D(1, 1, 1, 90deg);
+  }
+}
+
+@keyframes spin3Dw2 {
+  0% {
+    transform: rotate3D(1, 2, 0.5, 90deg);
+  }
+  50% {
+    transform: rotate3d(0.5, 0.5, 0.5, 360deg);
+  }
+  100% {
+    transform: rotate3D(1, 2, 0.5, 90deg);
+  }
+}
+
+@keyframes spin3Dw3 {
+  0% {
+    transform: rotate3D(0.5, 1, 2, 90deg);
+  }
+  50% {
+    transform: rotate3d(0.5, 0.5, 0.5, 360deg);
+  }
+  100% {
+    transform: rotate3D(0.5, 1, 2, 90deg);
+  }
+}
+@-webkit-keyframes fontAnim {
+  0% {
+    width: 0ch;
+  }
+  25% {
+    width: 0.5ch;
+  }
+  50% {
+    width: 1ch;
+  }
+  75% {
+    width: 1.5ch;
+  }
+  100% {
+    width: 1.5ch;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

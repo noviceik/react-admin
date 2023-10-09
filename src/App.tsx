@@ -1,14 +1,21 @@
-import React, { Suspense, lazy } from 'react'
-
-const BasicLayout = lazy(() => import('./layout'))
+import React from 'react'
+import Guard from '@/router/routerGuard'
+import { Outlet, BrowserRouter } from 'react-router-dom'
+import RouteTable from '@/router/RouterView'
 
 const App: React.FC = () => {
   return (
     <>
-      <Suspense fallback={<p>Loading component...</p>}>
-        <BasicLayout />
-      </Suspense>
+      <BrowserRouter>
+        <Guard>
+          <div className="base-box">
+            <Outlet />
+            <RouteTable />
+          </div>
+        </Guard>
+      </BrowserRouter>
     </>
   )
 }
+
 export default App
